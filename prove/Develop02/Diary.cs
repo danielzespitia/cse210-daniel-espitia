@@ -4,11 +4,11 @@ using System.IO;
 
 class Diary
 {
-    private List<Entry> entries;
+    private List<Entry> _entries;
 
     public Diary()
     {
-        entries = new List<Entry>();
+        _entries = new List<Entry>();
     }
 
     public void AddEntry(string message, string response)
@@ -20,12 +20,12 @@ class Diary
             Date = DateTime.Now
         };
 
-        entries.Add(entry);
+        _entries.Add(entry);
     }
 
     public void DisplayEntries()
     {
-        foreach (Entry entry in entries)
+        foreach (Entry entry in _entries)
         {
             Console.WriteLine($"Message: {entry.Message}");
             Console.WriteLine($"Response: {entry.Response}");
@@ -38,7 +38,7 @@ class Diary
     {
         using (StreamWriter writer = new StreamWriter(fileName))
         {
-            foreach (Entry entry in entries)
+            foreach (Entry entry in _entries)
             {
                 writer.WriteLine($"{entry.Message}|~|~{entry.Response}|~|~{entry.Date}");
             }
@@ -47,7 +47,7 @@ class Diary
 
     public void LoadFromFile(string fileName)
     {
-        entries.Clear();
+        _entries.Clear();
 
         using (StreamReader reader = new StreamReader(fileName))
         {
@@ -63,7 +63,7 @@ class Diary
                     Date = DateTime.Parse(parts[2])
                 };
 
-                entries.Add(entry);
+                _entries.Add(entry);
             }
         }
     }

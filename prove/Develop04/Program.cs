@@ -36,7 +36,6 @@ public abstract class MindfulnessActivity
             Thread.Sleep(1000);
         }
     }
-
     public abstract void PerformActivity();
 }
 
@@ -77,7 +76,6 @@ public class BreathingActivity : MindfulnessActivity
             Thread.Sleep(remainder * 1000);
         }
 
-        
     }
 
      private void DisplayMessageWithCountdown(string message, int seconds)
@@ -105,8 +103,7 @@ public class ReflectionActivity : MindfulnessActivity
         "------Think of a time when you helped someone in need------",
         "------Think of a time when you did something truly selfless------"
     };
-
-    private string[] questions = {
+        private string[] questions = {
         "Why was this experience meaningful to you?",
         "Have you ever done anything like this before?",
         "How did you get started?",
@@ -136,20 +133,14 @@ public class ReflectionActivity : MindfulnessActivity
         
         Console.WriteLine("Consider the following promt:");
         Console.WriteLine("");
-
-       
-
         Random random = new Random();
         string prompt = prompts[random.Next(prompts.Length)];
         DisplayMessageWithCountdown(prompt, 3);
         Thread.Sleep(1000);
         Console.WriteLine("");
-
         Console.WriteLine("When you have something in mind, press enter to start...");
         Console.ReadLine();
         Console.WriteLine("");
-
-       
         {
             foreach (string question in questions)
             {
